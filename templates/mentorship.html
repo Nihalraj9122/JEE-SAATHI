@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1:1 Mentorship | JEE Saathi</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Exact Same Color Palette */
+        :root {
+            --primary-dark: #0a1931;
+            --accent-blue: #185adb;
+            --accent-light: #e6eefa;
+            --text-main: #333333;
+            --white: #ffffff;
+            --bg-gray: #f8faff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--text-main);
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        /* --- Same Navbar CSS --- */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: var(--primary-dark) !important;
+        }
+
+        .navbar-brand span {
+            color: var(--accent-blue);
+        }
+
+        .nav-item {
+            margin: 0 12px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #555 !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-blue) !important;
+        }
+
+        /* --- Mentorship Page Specific CSS --- */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent-blue));
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 20px rgba(24, 90, 219, 0.1);
+        }
+
+        .page-header h1 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 40px;
+        }
+
+        /* Mentor Cards */
+        .mentor-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease;
+            text-align: center;
+            height: 100%;
+        }
+
+        .mentor-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-light);
+            box-shadow: 0 15px 30px rgba(24, 90, 219, 0.08);
+        }
+
+        .mentor-avatar {
+            width: 100px;
+            height: 100px;
+            background-color: var(--accent-light);
+            color: var(--accent-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 20px auto;
+        }
+
+        .mentor-name {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .mentor-score {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: #0284c7;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
+        .mentor-desc {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        /* Doubt Box Form */
+        .doubt-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-control {
+            background-color: var(--bg-gray);
+            border: 1px solid #e1e5eb;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: var(--accent-blue);
+            background-color: var(--white);
+        }
+
+        .btn-submit {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-weight: 600;
+            border: none;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* --- Same Footer CSS --- */
+        .footer {
+            padding: 60px 0 30px;
+            background-color: #050d1a;
+            color: #a0aabf;
+        }
+
+        .footer h5 {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .footer a {
+            color: #a0aabf;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-blue);
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .mentor-card-premium {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px 20px;
+            /* Padding badhai taaki saans lene ki jagah mile */
+            border: 1px solid #edf2f7;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            /* Soft shadow */
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Sab kuch exactly center */
+            justify-content: center;
+        }
+
+        .mentor-card-premium:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(24, 90, 219, 0.08);
+            border-color: #dbe4f7;
+        }
+
+        .mentor-avatar {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #185adb, #4da3ff);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(24, 90, 219, 0.2);
+            /* Avatar me slight glow */
+        }
+
+        .mentor-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0a1931;
+            margin-bottom: 4px;
+        }
+
+        .mentor-role {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .mentor-badge {
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+            background-color: #f8faff;
+            border: 1px solid #e1e5eb;
+            color: #444;
+        }
+
+        .mentor-bio {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 15px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        #peekPopup {
+            display: none;
+            /* Default me chhipa rahega */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 25, 49, 0.85);
+            /* Tera primary dark color with transparency */
+            backdrop-filter: blur(8px);
+            /* Peeche ka background blur ho jayega */
+            z-index: 9999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            /* Text select na ho galti se */
+        }
+
+        #peekImg {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            /* Ekdum gol photo */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 4px solid var(--white);
+            object-fit: cover;
+            transform: scale(0.8);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* Bouncy pop effect */
+        }
+
+        #peekName {
+            color: var(--white);
+            margin-top: 25px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Jab popup active ho toh photo badi ho jaye */
+        #peekPopup.active #peekImg {
+            transform: scale(1);
+        }
+
+        .mentor-bio {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 15px;
+            line-height: 1.5;
+            text-align: center;
+
+            /* JADOO: Text ko 3 lines par lock karne ka code */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            /* Kitni lines dikhani hain */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* ========================================== */
+        /* SAATHI AI CHATBOT CSS                      */
+        /* ========================================== */
+
+        /* Floating Action Button Styling */
+        .ai-chat-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #185adb, #0a1931);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(24, 90, 219, 0.4);
+            z-index: 1050;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .ai-chat-fab:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 12px 30px rgba(24, 90, 219, 0.6);
+        }
+
+        /* Pulse Effect Ring */
+        .pulse-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 2px solid #185adb;
+            animation: fabPulse 2s infinite;
+            z-index: -1;
+        }
+
+        @keyframes fabPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* Expandable Chat Window Layout */
+        .ai-chat-window {
+            position: fixed;
+            bottom: 105px;
+            right: 30px;
+            width: 380px;
+            max-width: calc(100vw - 60px);
+            height: 480px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(10, 25, 49, 0.15);
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: translateY(30px) scale(0.9);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .ai-chat-window.active {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Chat Window Header */
+        .ai-chat-header {
+            background: linear-gradient(135deg, #0a1931, #185adb);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ai-avatar {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .btn-close-chat {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            opacity: 0.8;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-close-chat:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Chat Messages Area */
+        .ai-chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Message Bubbles */
+        .chat-msg {
+            display: flex;
+            width: 100%;
+        }
+
+        .msg-bubble {
+            max-width: 80%;
+            padding: 11px 16px;
+            border-radius: 16px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .bot-msg {
+            justify-content: flex-start;
+        }
+
+        .bot-msg .msg-bubble {
+            background-color: #ffffff;
+            color: #1e293b;
+            border-bottom-left-radius: 4px;
+            border: 1px solid #edf2f7;
+        }
+
+        .user-msg {
+            justify-content: flex-end;
+        }
+
+        .user-msg .msg-bubble {
+            background-color: #185adb;
+            color: #ffffff;
+            border-bottom-right-radius: 4px;
+        }
+
+        /* Typing Animation */
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            background-color: #94a3b8;
+            border-radius: 50%;
+            display: inline-block;
+            animation: blink 1.4s infinite both;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: .2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: .4s;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: .2;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: .2;
+            }
+        }
+
+        /* Footer & Inputs */
+        .ai-chat-footer {
+            padding: 14px;
+            background: #ffffff;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .chat-input-field {
+            border-radius: 25px;
+            padding: 10px 18px;
+            font-size: 0.88rem;
+            border: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+            width: 100%;
+        }
+
+        .chat-input-field:focus {
+            box-shadow: none;
+            border-color: #185adb;
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        .btn-send-chat {
+            width: 42px;
+            height: 42px;
+            background-color: #eff6ff;
+            color: #185adb;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            flex-shrink: 0;
+        }
+
+        .btn-send-chat:hover {
+            background-color: #185adb;
+            color: #ffffff;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">JEE <span>SAATHI</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/predictor">Predictor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/mentorship">Mentorship</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+                </ul>
+
+                {% if logged_in %}
+                <div class="dropdown ms-lg-3">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        style="font-weight: 600; color: var(--accent-blue) !important; border: 1px solid var(--accent-light); border-radius: 30px; padding: 6px 18px !important; background-color: var(--accent-light); text-decoration: none;">
+                        <i class="fa-regular fa-user-circle me-1"></i> Hi, {{ user_name }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end"
+                        style="border: none; box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-radius: 12px; padding: 10px 0; margin-top: 10px;">
+                        <li><a class="dropdown-item" href="/"
+                                style="padding: 10px 25px; font-weight: 500; color: var(--text-main);"><i
+                                    class="fa-solid fa-house me-2"></i> Home</a></li>
+                        <li><a class="dropdown-item" href="/dashboard"
+                                style="padding: 10px 25px; font-weight: 500; color: var(--text-main);"><i
+                                    class="fa-solid fa-chart-pie me-2"></i> My Dashboard</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="/logout"
+                                style="padding: 10px 25px; font-weight: 500;"><i
+                                    class="fa-solid fa-arrow-right-from-bracket me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+                {% else %}
+                <div class="d-flex gap-2 ms-lg-3">
+                    <a href="/login" class="btn btn-outline"
+                        style="border-radius: 30px; font-weight: 600; padding: 8px 20px; text-decoration: none; border: 2px solid var(--accent-blue); color: var(--accent-blue);">Log
+                        In</a>
+                    <a href="/signup" class="btn btn-filled"
+                        style="background-color: var(--accent-blue); color: var(--white); border-radius: 30px; font-weight: 600; padding: 8px 20px; text-decoration: none; border: none;">Sign
+                        Up</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Ask the Achievers</h1>
+            <p>Stuck in your prep? Get your doubts cleared by students who have recently cracked JEE Mains with top
+                percentiles.</p>
+        </div>
+    </section>
+
+    <div class="container mb-5 pb-5 border-bottom">
+        <h2 class="section-title">Meet Your Mentors</h2>
+        <p class="section-subtitle">Real students, real experiences, practical advice.</p>
+
+        <div class="row g-4 mt-2">
+            {% for mentor in mentors %}
+            <div class="col-md-6 col-lg-4">
+                <div class="mentor-card-premium">
+
+                    <div class="mentor-avatar peekable-avatar" data-name="{{ mentor.name }}"
+                        data-img="{% if mentor.profile_pic != 'default_mentor.png' %}{{ url_for('static', filename='profile_pics/' + mentor.profile_pic) }}{% else %}none{% endif %}">
+
+                        {% if mentor.profile_pic == 'default_mentor.png' %}
+                        <i class="fa-solid fa-user-tie"></i>
+                        {% else %}
+                        <img src="{{ url_for('static', filename='profile_pics/' + mentor.profile_pic) }}"
+                            style="width:100%; height:100%; border-radius:50%; object-fit:cover; pointer-events: none;">
+                        {% endif %}
+                    </div>
+
+                    <div class="mentor-name">{{ mentor.name }}</div>
+
+                    <div class="mb-3">
+                        {% if mentor.work_status == 'Working Professional' %}
+                        <span class="badge bg-dark" style="font-size: 0.75rem; padding: 6px 12px; font-weight: 500;">
+                            <i class="fa-solid fa-user-tie me-1"></i> Professional
+                        </span>
+                        {% else %}
+                        <span class="badge"
+                            style="background-color: #4f46e5; color: white; font-size: 0.75rem; padding: 6px 12px; font-weight: 500;">
+                            <i class="fa-solid fa-user-graduate me-1"></i> Student
+                        </span>
+                        {% endif %}
+                    </div>
+
+                    <div class="mentor-role text-primary" style="font-weight: 600; font-size: 0.95rem;">
+                        {% if mentor.work_status == 'Working Professional' %}
+                        <i class="fa-solid fa-laptop-code me-1"></i>
+                        {% else %}
+                        <i class="fa-solid fa-building-columns me-1"></i>
+                        {% endif %}
+
+                        {{ mentor.college if mentor.college else 'Independent' }}
+                    </div>
+                    <!-- <div class="mentor-avatar"><i class="fa-solid fa-user-astronaut"></i></div>
+
+                    <div class="mentor-name">{{ mentor.name }}</div>
+
+                    {% if mentor.college %}
+                    <div class="mentor-role text-primary"><i class="fa-solid fa-building-columns me-1"></i> {{
+                        mentor.college }}</div>
+                    {% else %}
+                    <div class="mentor-role"><i class="fa-solid fa-chalkboard-user me-1"></i> Independent Expert</div>
+                    {% endif %} -->
+
+                    <div class="d-flex justify-content-center gap-2 flex-wrap w-100">
+                        {% if mentor.jee_score %}
+                        <span class="mentor-badge"><i class="fa-solid fa-chart-pie text-warning me-1"></i> Percentile:
+                            {{ mentor.jee_score }}</span>
+                        {% endif %}
+                        {% if mentor.batch_year %}
+                        <span class="mentor-badge"><i class="fa-solid fa-calendar me-1"></i> Batch: {{ mentor.batch_year
+                            }}</span>
+                        {% endif %}
+                    </div>
+
+                    {% if mentor.bio %}
+                    <div class="mentor-bio">"{{ mentor.bio }}"</div>
+                    {% endif %}
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container mb-5 pb-4">
+        <h2 class="section-title">Drop Your Query</h2>
+        <p class="section-subtitle">Fill out the form below. Our mentors will reply within 24 hours.</p>
+
+        <div class="doubt-box">
+            <form action="/submit_doubt" method="POST">
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold text-dark mb-2">Select Target Mentor</label>
+                        <select name="mentor_choice" class="form-select shadow-sm" required
+                            style="padding: 12px; border-radius: 8px;">
+                            <option value="" disabled selected>Select an Expert...</option>
+                            <option value="Anyone" style="color: #1fa463; font-weight: 500;">Anyone (First available
+                                mentor)</option>
+                            {% for mentor in mentors %}
+                            <option value="{{ mentor.name }}">{{ mentor.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold text-dark mb-2">Topic / Chapter</label>
+                        <input type="text" name="subject" class="form-control shadow-sm"
+                            placeholder="e.g. Rotation, Backlogs" required style="padding: 12px; border-radius: 8px;">
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold text-dark mb-2">Detailed Query</label>
+                    <textarea name="query_text" class="form-control shadow-sm" rows="4"
+                        placeholder="Explain your doubt in detail..." required
+                        style="padding: 15px; border-radius: 8px; resize: vertical;"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                    style="border-radius: 10px; font-size: 1.1rem;">
+                    <i class="fa-regular fa-paper-plane me-2"></i> Submit Doubt on Portal
+                </button>
+            </form>
+        </div>
+    </div>
+    <button class="ai-chat-fab" onclick="toggleAIChat()" title="Ask Saathi AI">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span class="pulse-ring"></span>
+    </button>
+
+    <div class="ai-chat-window" id="aiChatWindow">
+        <div class="ai-chat-header">
+            <div class="d-flex align-items-center gap-2" style="display: flex; gap: 8px; align-items: center;">
+                <div class="ai-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div>
+                    <h6 class="fw-bold text-white mb-0" style="font-size: 0.95rem; margin: 0;">Saathi AI Assistant</h6>
+                    <small class="text-white opacity-75" style="font-size: 0.7rem;">
+                        <i class="fa-solid fa-circle text-success me-1"></i> Powered by Groq
+                    </small>
+                </div>
+            </div>
+            <button class="btn-close-chat" onclick="toggleAIChat()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="ai-chat-body" id="chatMessages">
+            <div class="chat-msg bot-msg">
+                <div class="msg-bubble">
+                    Bhai! Main tera <strong>Saathi AI</strong> hoon. Chahe padhai ki tension ho, counseling ka doubt ho,
+                    ya motivation low ho—kuch bhi poocho, hum milkar crack karenge! 🚀
+                </div>
+            </div>
+        </div>
+
+        <div class="ai-chat-footer">
+            <form id="aiChatForm" onsubmit="handleChatSubmit(event)" style="display: flex; gap: 8px; margin: 0;">
+                <input type="text" id="chatInput" class="chat-input-field" placeholder="Type your query here..."
+                    autocomplete="off" required>
+                <button type="submit" class="btn-send-chat"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer" id="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h4 style="color: var(--white); font-weight: 700; margin-bottom: 15px;">JEE <span
+                            style="color: var(--accent-blue);">SAATHI</span></h4>
+                    <p style="margin-bottom: 20px;">Your trusted AI-powered companion for JEE counseling, rank
+                        prediction, and verified study resources.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <a href="/">Home</a>
+                    <a href="/predictor">College Predictor</a>
+                    <a href="/resources">Study Materials</a>
+                    <a href="/mentorship">Book a Mentor</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Support & Legal</h5>
+                    <a href="/#footer-section">About Us</a>
+                    <a href="#">Contact Support</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 JEE Saathi. Nihal bhaiya aapke saath hai.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const avatars = document.querySelectorAll('.peekable-avatar');
+            const peekPopup = document.getElementById('peekPopup');
+            const peekImg = document.getElementById('peekImg');
+            const peekName = document.getElementById('peekName');
+
+            avatars.forEach(avatar => {
+                let imgSrc = avatar.getAttribute('data-img');
+                let mName = avatar.getAttribute('data-name');
+
+                // Agar asli photo hai tabhi popup dikhega (default icon pe nahi)
+                if (imgSrc !== 'none') {
+                    avatar.style.cursor = 'pointer';
+
+                    const showPeek = (e) => {
+                        // Mobile pe scroll hone se rokne ke liye
+                        if (e.cancelable) e.preventDefault();
+
+                        peekImg.src = imgSrc;
+                        peekName.innerText = mName;
+                        peekPopup.style.display = 'flex';
+                        // Halki si delay ke baad animation class lagayenge
+                        setTimeout(() => peekPopup.classList.add('active'), 10);
+                    };
+
+                    const hidePeek = () => {
+                        peekPopup.classList.remove('active');
+                        setTimeout(() => {
+                            peekPopup.style.display = 'none';
+                            peekImg.src = '';
+                        }, 200); // Animation khatam hone ke baad hide
+                    };
+
+                    // PC (Mouse) events
+                    avatar.addEventListener('mousedown', showPeek);
+                    window.addEventListener('mouseup', hidePeek); // Window pe lagaya taaki bahar jane pe bhi band ho
+
+                    // Mobile (Touch) events
+                    avatar.addEventListener('touchstart', showPeek, { passive: false });
+                    window.addEventListener('touchend', hidePeek);
+                }
+            });
+        });
+        // Window open/close toggle layout state
+        function toggleAIChat() {
+            const chatWin = document.getElementById('aiChatWindow');
+            chatWin.classList.toggle('active');
+
+            // Auto-scroll logic inside logs window when opening
+            if (chatWin.classList.contains('active')) {
+                const chatBody = document.getElementById('chatMessages');
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+        }
+
+        // Message bhejna aur receive karna (WITH AI MEMORY)
+        function handleChatSubmit(event) {
+            event.preventDefault();
+            const inputEl = document.getElementById('chatInput');
+            const queryText = inputEl.value.trim();
+            if (!queryText) return;
+
+            const chatMessages = document.getElementById('chatMessages');
+
+            // 🧠 1. API History Session Storage se nikalo (ya naya array banao)
+            let apiHistory = JSON.parse(sessionStorage.getItem('saathi_api_history')) || [];
+
+            // User ke message ko history me daalo
+            apiHistory.push({ role: "user", content: queryText });
+            sessionStorage.setItem('saathi_api_history', JSON.stringify(apiHistory));
+
+            // 2. UI par User message dikhao
+            const userHtml = `<div class="chat-msg user-msg"><div class="msg-bubble">${queryText}</div></div>`;
+            chatMessages.insertAdjacentHTML('beforeend', userHtml);
+            inputEl.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            saveChatState();
+
+            // 3. Typing animation
+            const typingId = 'typing_' + Date.now();
+            const typingHtml = `
+        <div class="chat-msg bot-msg" id="${typingId}">
+            <div class="msg-bubble typing-dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>`;
+            chatMessages.insertAdjacentHTML('beforeend', typingHtml);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // 4. API Call (Ab hum poori 'apiHistory' bhej rahe hain)
+            fetch('/ai-query', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ history: apiHistory }) // 🔥 Ye change hua hai
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById(typingId).remove();
+
+                    // AI ke response ko history me save karo taaki usko agli baar yaad rahe
+                    apiHistory.push({ role: "assistant", content: data.response });
+                    sessionStorage.setItem('saathi_api_history', JSON.stringify(apiHistory));
+
+                    // Formatting theek karna (**bold** aur line breaks)
+                    let cleanResponse = data.response
+                        .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+                        .replace(/\*(.*?)\*/g, '<i>$1</i>')
+                        .replace(/\n/g, '<br>');
+
+                    const botHtml = `<div class="chat-msg bot-msg"><div class="msg-bubble">${cleanResponse}</div></div>`;
+                    chatMessages.insertAdjacentHTML('beforeend', botHtml);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                    saveChatState();
+                })
+                .catch(error => {
+                    document.getElementById(typingId).remove();
+                    const errorHtml = `<div class="chat-msg bot-msg"><div class="msg-bubble text-danger">Network error bhai! Thodi der baad try kar.</div></div>`;
+                    chatMessages.insertAdjacentHTML('beforeend', errorHtml);
+
+                    // Error aaye toh aakhri message hata do taaki history kharab na ho
+                    apiHistory.pop();
+                    sessionStorage.setItem('saathi_api_history', JSON.stringify(apiHistory));
+                    saveChatState();
+                });
+        }
+        // ==========================================
+        // SAATHI AI CHATBOT JS LOGIC (With Memory)
+        // ==========================================
+
+        // Chat state memory save karna
+        function saveChatState() {
+            const chatMessages = document.getElementById('chatMessages').innerHTML;
+            const chatWin = document.getElementById('aiChatWindow');
+            const isOpen = chatWin.classList.contains('active');
+
+            sessionStorage.setItem('saathi_chat_history', chatMessages);
+            sessionStorage.setItem('saathi_chat_is_open', isOpen);
+        }
+
+        // Page load hote hi purana chat lana
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedChat = sessionStorage.getItem('saathi_chat_history');
+            const isOpen = sessionStorage.getItem('saathi_chat_is_open');
+
+            const chatWin = document.getElementById('aiChatWindow');
+            const chatMessages = document.getElementById('chatMessages');
+
+            if (savedChat) {
+                chatMessages.innerHTML = savedChat;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            if (isOpen === 'true') {
+                chatWin.classList.add('active');
+            }
+        });
+
+        // Chat window on/off karna
+        function toggleAIChat() {
+            const chatWin = document.getElementById('aiChatWindow');
+            chatWin.classList.toggle('active');
+
+            if (chatWin.classList.contains('active')) {
+                const chatBody = document.getElementById('chatMessages');
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+            saveChatState();
+        }
+
+        // Message bhejna aur receive karna
+        function handleChatSubmit(event) {
+            event.preventDefault();
+            const inputEl = document.getElementById('chatInput');
+            const queryText = inputEl.value.trim();
+            if (!queryText) return;
+
+            const chatMessages = document.getElementById('chatMessages');
+
+            // 1. User message dikhao
+            const userHtml = `<div class="chat-msg user-msg"><div class="msg-bubble">${queryText}</div></div>`;
+            chatMessages.insertAdjacentHTML('beforeend', userHtml);
+            inputEl.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            saveChatState();
+
+            // 2. Typing animation
+            const typingId = 'typing_' + Date.now();
+            const typingHtml = `
+        <div class="chat-msg bot-msg" id="${typingId}">
+            <div class="msg-bubble typing-dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>`;
+            chatMessages.insertAdjacentHTML('beforeend', typingHtml);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // 3. API Call
+            fetch('/ai-query', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: queryText })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById(typingId).remove();
+
+                    // Formatting theek karna (**bold** aur line breaks)
+                    let cleanResponse = data.response
+                        .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+                        .replace(/\*(.*?)\*/g, '<i>$1</i>')
+                        .replace(/\n/g, '<br>');
+
+                    const botHtml = `<div class="chat-msg bot-msg"><div class="msg-bubble">${cleanResponse}</div></div>`;
+                    chatMessages.insertAdjacentHTML('beforeend', botHtml);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                    saveChatState();
+                })
+                .catch(error => {
+                    document.getElementById(typingId).remove();
+                    const errorHtml = `<div class="chat-msg bot-msg"><div class="msg-bubble text-danger">Network error bhai! Thodi der baad try kar.</div></div>`;
+                    chatMessages.insertAdjacentHTML('beforeend', errorHtml);
+                    saveChatState();
+                });
+        }
+
+        // Chat ke bahar click karne par usko band karna
+        document.addEventListener('click', function (event) {
+            const chatWindow = document.getElementById('aiChatWindow');
+            const fabButton = document.querySelector('.ai-chat-fab');
+
+            if (chatWindow && chatWindow.classList.contains('active')) {
+                if (!chatWindow.contains(event.target) && !fabButton.contains(event.target)) {
+                    chatWindow.classList.remove('active');
+                    saveChatState();
+                }
+            }
+        });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div id="peekPopup">
+        <img id="peekImg" src="" alt="Mentor Preview">
+        <h3 id="peekName"></h3>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI College Predictor | JEE Saathi</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-dark: #0a1931;
+            --accent-blue: #185adb;
+            --accent-light: #e6eefa;
+            --text-main: #333333;
+            --white: #ffffff;
+            --bg-gray: #f8faff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: var(--primary-dark) !important;
+        }
+
+        .navbar-brand span {
+            color: var(--accent-blue);
+        }
+
+        .nav-item {
+            margin: 0 12px;
+            /* Wapas original perfect gap par set kar diya */
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #555 !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue) !important;
+        }
+
+        .user-profile-nav {
+            font-weight: 600;
+            color: var(--accent-blue) !important;
+            border: 1px solid var(--accent-light);
+            border-radius: 30px;
+            padding: 6px 18px !important;
+            background-color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+        }
+
+        /* Predictor Container */
+        .predictor-container {
+            padding: 60px 0;
+        }
+
+        .predictor-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .form-title {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        /* Input Styles */
+        .form-label {
+            font-weight: 500;
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 12px;
+            padding: 12px 18px;
+            border: 1px solid #e0e6ed;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(24, 90, 219, 0.1);
+        }
+
+        /* Button */
+        .btn-predict {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border-radius: 30px;
+            padding: 12px 35px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .btn-predict:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(10, 25, 49, 0.2);
+        }
+
+        /* ========================================== */
+        /* SAATHI AI CHATBOT CSS                      */
+        /* ========================================== */
+
+        /* Floating Action Button Styling */
+        .ai-chat-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #185adb, #0a1931);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(24, 90, 219, 0.4);
+            z-index: 1050;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .ai-chat-fab:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 12px 30px rgba(24, 90, 219, 0.6);
+        }
+
+        /* Pulse Effect Ring */
+        .pulse-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 2px solid #185adb;
+            animation: fabPulse 2s infinite;
+            z-index: -1;
+        }
+
+        @keyframes fabPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* Expandable Chat Window Layout */
+        .ai-chat-window {
+            position: fixed;
+            bottom: 105px;
+            right: 30px;
+            width: 380px;
+            max-width: calc(100vw - 60px);
+            height: 480px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(10, 25, 49, 0.15);
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: translateY(30px) scale(0.9);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .ai-chat-window.active {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Chat Window Header */
+        .ai-chat-header {
+            background: linear-gradient(135deg, #0a1931, #185adb);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ai-avatar {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .btn-close-chat {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            opacity: 0.8;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-close-chat:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Chat Messages Area */
+        .ai-chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Message Bubbles */
+        .chat-msg {
+            display: flex;
+            width: 100%;
+        }
+
+        .msg-bubble {
+            max-width: 80%;
+            padding: 11px 16px;
+            border-radius: 16px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .bot-msg {
+            justify-content: flex-start;
+        }
+
+        .bot-msg .msg-bubble {
+            background-color: #ffffff;
+            color: #1e293b;
+            border-bottom-left-radius: 4px;
+            border: 1px solid #edf2f7;
+        }
+
+        .user-msg {
+            justify-content: flex-end;
+        }
+
+        .user-msg .msg-bubble {
+            background-color: #185adb;
+            color: #ffffff;
+            border-bottom-right-radius: 4px;
+        }
+
+        /* Typing Animation */
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            background-color: #94a3b8;
+            border-radius: 50%;
+            display: inline-block;
+            animation: blink 1.4s infinite both;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: .2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: .4s;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: .2;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: .2;
+            }
+        }
+
+        /* Footer & Inputs */
+        .ai-chat-footer {
+            padding: 14px;
+            background: #ffffff;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .chat-input-field {
+            border-radius: 25px;
+            padding: 10px 18px;
+            font-size: 0.88rem;
+            border: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+            width: 100%;
+        }
+
+        .chat-input-field:focus {
+            box-shadow: none;
+            border-color: #185adb;
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        .btn-send-chat {
+            width: 42px;
+            height: 42px;
+            background-color: #eff6ff;
+            color: #185adb;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            flex-shrink: 0;
+        }
+
+        .btn-send-chat:hover {
+            background-color: #185adb;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">JEE <span>SAATHI</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/predictor">Predictor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/mentorship">Mentorship</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+                </ul>
+
+                {% if logged_in %}
+                <div class="dropdown ms-lg-3">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        style="font-weight: 600; color: var(--accent-blue) !important; border: 1px solid var(--accent-light); border-radius: 30px; padding: 6px 18px !important; background-color: var(--accent-light); text-decoration: none;">
+                        <i class="fa-regular fa-user-circle me-1"></i> Hi, {{ user_name }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end"
+                        style="border: none; box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-radius: 12px; padding: 10px 0; margin-top: 10px;">
+                        <li><a class="dropdown-item" href="/"
+                                style="padding: 10px 25px; font-weight: 500; color: var(--text-main);"><i
+                                    class="fa-solid fa-house me-2"></i> Home</a></li>
+                        <li><a class="dropdown-item" href="/dashboard"
+                                style="padding: 10px 25px; font-weight: 500; color: var(--text-main);"><i
+                                    class="fa-solid fa-chart-pie me-2"></i> My Dashboard</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="/logout"
+                                style="padding: 10px 25px; font-weight: 500;"><i
+                                    class="fa-solid fa-arrow-right-from-bracket me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+                {% else %}
+                <div class="d-flex gap-2 ms-lg-3">
+                    <a href="/login" class="btn btn-outline"
+                        style="border-radius: 30px; font-weight: 600; padding: 8px 20px; text-decoration: none; border: 2px solid var(--accent-blue); color: var(--accent-blue);">Log
+                        In</a>
+                    <a href="/signup" class="btn btn-filled"
+                        style="background-color: var(--accent-blue); color: var(--white); border-radius: 30px; font-weight: 600; padding: 8px 20px; text-decoration: none; border: none;">Sign
+                        Up</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="container predictor-container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card p-4 p-md-5 shadow-lg border-0"
+                    style="border-radius: 20px; background: #ffffff; position: relative; overflow: hidden;">
+
+                    <div
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--accent-blue), #4da3ff, #1fa463);">
+                    </div>
+
+                    <div class="text-center mb-4 mt-2">
+                        <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2"
+                            style="border-radius: 20px; font-weight: 600; font-size: 0.85rem;">
+                            <i class="fa-solid fa-wand-magic-sparkles me-1"></i> AI-Powered Engine
+                        </span>
+                        <h2 class="fw-bold text-dark mb-2" style="letter-spacing: -0.5px;">College Predictor</h2>
+                        <p class="text-muted small">Apne details daalein aur check karein pichle 5 saal ke JOSAA/CSAB
+                            data ke mutabik aapko kaun sa college mil sakta hai.</p>
+                    </div>
+
+                    <form action="/predict" method="POST">
+
+                        <div class="mb-3">
+                            <label for="jee_rank" class="form-label">JEE Main CRL Rank</label>
+                            <input type="number" class="form-control" id="jee_rank" name="jee_rank"
+                                placeholder="E.g. 25000" required min="1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Seat Category</label>
+                            <select class="form-select" id="category" name="category" required>
+                                <option value="" disabled selected>Select your category</option>
+                                <option value="OPEN">General (OPEN)</option>
+                                <option value="OBC-NCL">OBC-NCL</option>
+                                <option value="SC">SC</option>
+                                <option value="ST">ST</option>
+                                <option value="EWS">EWS</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="home_state" class="form-label">Home State / State of Eligibility</label>
+                            <select class="form-select" id="home_state" name="home_state" required>
+                                <option value="" disabled selected>Select your state</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select class="form-select" id="gender" name="gender" required>
+                                <option value="Gender-Neutral" selected>Gender-Neutral</option>
+                                <option value="Female-Only">Female-Only (Including Supernumerary)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 py-3 mt-2 fw-bold"
+                            style="border-radius: 12px; font-size: 1.1rem; box-shadow: 0 8px 20px rgba(24,90,219,0.2); transition: all 0.3s ease;">
+                            <i class="fa-solid fa-microchip me-2"></i> Predict My Colleges
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="ai-chat-fab" onclick="toggleAIChat()" title="Ask Saathi AI">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span class="pulse-ring"></span>
+    </button>
+
+    <div class="ai-chat-window" id="aiChatWindow">
+        <div class="ai-chat-header">
+            <div class="d-flex align-items-center gap-2" style="display: flex; gap: 8px; align-items: center;">
+                <div class="ai-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div>
+                    <h6 class="fw-bold text-white mb-0" style="font-size: 0.95rem; margin: 0;">Saathi AI Assistant</h6>
+                    <small class="text-white opacity-75" style="font-size: 0.7rem;">
+                        <i class="fa-solid fa-circle text-success me-1"></i> Powered by Groq
+                    </small>
+                </div>
+            </div>
+            <button class="btn-close-chat" onclick="toggleAIChat()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="ai-chat-body" id="chatMessages">
+            <div class="chat-msg bot-msg">
+                <div class="msg-bubble">
+                    Bhai! Main tera <strong>Saathi AI</strong> hoon. Chahe padhai ki tension ho, counseling ka doubt ho,
+                    ya motivation low ho—kuch bhi poocho, hum milkar crack karenge! 🚀
+                </div>
+            </div>
+        </div>
+
+        <div class="ai-chat-footer">
+            <form id="aiChatForm" onsubmit="handleChatSubmit(event)" style="display: flex; gap: 8px; margin: 0;">
+                <input type="text" id="chatInput" class="chat-input-field" placeholder="Type your query here..."
+                    autocomplete="off" required>
+                <button type="submit" class="btn-send-chat"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+    <script>
+        // ==========================================
+        // SAATHI AI CHATBOT JS LOGIC (With Memory)
+        // ==========================================
+
+        // Chat state memory save karna
+        function saveChatState() {
+            const chatMessages = document.getElementById('chatMessages').innerHTML;
+            const chatWin = document.getElementById('aiChatWindow');
+            const isOpen = chatWin.classList.contains('active');
+
+            sessionStorage.setItem('saathi_chat_history', chatMessages);
+            sessionStorage.setItem('saathi_chat_is_open', isOpen);
+        }
+
+        // Page load hote hi purana chat lana
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedChat = sessionStorage.getItem('saathi_chat_history');
+            const isOpen = sessionStorage.getItem('saathi_chat_is_open');
+
+            const chatWin = document.getElementById('aiChatWindow');
+            const chatMessages = document.getElementById('chatMessages');
+
+            if (savedChat) {
+                chatMessages.innerHTML = savedChat;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            if (isOpen === 'true') {
+                chatWin.classList.add('active');
+            }
+        });
+
+        // Chat window on/off karna
+        function toggleAIChat() {
+            const chatWin = document.getElementById('aiChatWindow');
+            chatWin.classList.toggle('active');
+
+            if (chatWin.classList.contains('active')) {
+                const chatBody = document.getElementById('chatMessages');
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+            saveChatState();
+        }
+
+        // Message bhejna aur receive karna (WITH AI MEMORY)
+        function handleChatSubmit(event) {
+            event.preventDefault();
+            const inputEl = document.getElementById('chatInput');
+            const queryText = inputEl.value.trim();
+            if (!queryText) return;
+
+            const chatMessages = document.getElementById('chatMessages');
+
+            // 🧠 1. API History Session Storage se nikalo (ya naya array banao)
+            let apiHistory = JSON.parse(sessionStorage.getItem('saathi_api_history')) || [];
+
+            // User ke message ko history me daalo
+            apiHistory.push({ role: "user", content: queryText });
+            sessionStorage.setItem('saathi_api_history', JSON.stringify(apiHistory));
+
+            // 2. UI par User message dikhao
+            const userHtml = `<div class="chat-msg user-msg"><div class="msg-bubble">${queryText}</div></div>`;
+            chatMessages.insertAdjacentHTML('beforeend', userHtml);
+            inputEl.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            saveChatState();
+
+            // 3. Typing animation
+            const typingId = 'typing_' + Date.now();
+            const typingHtml = `
+        <div class="chat-msg bot-msg" id="${typingId}">
+            <div class="msg-bubble typing-dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>`;
+            chatMessages.insertAdjacentHTML('beforeend', typingHtml);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // 4. API Call (Ab hum poori 'apiHistory' bhej rahe hain)
+            fetch('/ai-query', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ history: apiHistory }) // 🔥 Ye change hua hai
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById(typingId).remove();
+
+                    // AI ke response ko history me save karo taaki usko agli baar yaad rahe
+                    apiHistory.push({ role: "assistant", content: data.response });
+                    sessionStorage.setItem('saathi_api_history', JSON.stringify(apiHistory));
+
+                    // Formatting theek karna (**bold** aur line breaks)
+                    let cleanResponse = data.response
+                        .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+                        .replace(/\*(.*?)\*/g, '<i>$1</i>')
+                        .replace(/\n/g, '<br>');
+
+                    const botHtml = `<div class="chat-msg bot-msg"><div class="msg-bubble">${cleanResponse}</div></div>`;
+                    chatMessages.insertAdjacentHTML('beforeend', botHtml);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                    saveChatState();
+                })
+                .catch(error => {
+                    document.getElementById(typingId).remove();
+                    const errorHtml = `<div class="chat-msg bot-msg"><div class="msg-bubble text-danger">Network error bhai! Thodi der baad try kar.</div></div>`;
+                    chatMessages.insertAdjacentHTML('beforeend', errorHtml);
+
+                    // Error aaye toh aakhri message hata do taaki history kharab na ho
+                    apiHistory.pop();
+                    sessionStorage.setItem('saathi_api_history', JSON.stringify(apiHistory));
+                    saveChatState();
+                });
+        }
+
+        // Chat ke bahar click karne par usko band karna
+        document.addEventListener('click', function (event) {
+            const chatWindow = document.getElementById('aiChatWindow');
+            const fabButton = document.querySelector('.ai-chat-fab');
+
+            if (chatWindow && chatWindow.classList.contains('active')) {
+                if (!chatWindow.contains(event.target) && !fabButton.contains(event.target)) {
+                    chatWindow.classList.remove('active');
+                    saveChatState();
+                }
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

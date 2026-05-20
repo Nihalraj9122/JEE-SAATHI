@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Saathi | Your Trusted Counseling Partner</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Smooth scrolling for the About Us link */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Modern Color Palette (Clean look) */
+        :root {
+            --primary-dark: #0a1931;
+            --accent-blue: #185adb;
+            --accent-light: #e6eefa;
+            --text-main: #333333;
+            --white: #ffffff;
+            --bg-gray: #f8faff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--text-main);
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: var(--primary-dark) !important;
+        }
+
+        .navbar-brand span {
+            color: var(--accent-blue);
+        }
+
+        .nav-item {
+            margin: 0 12px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #555 !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 100px 0;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+        }
+
+        .hero-title span {
+            color: var(--accent-blue);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-img:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Buttons */
+        .btn-custom {
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-filled {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border: none;
+        }
+
+        .btn-filled:hover {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-light);
+            color: var(--accent-blue);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 100px 0;
+            background-color: var(--bg-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(24, 90, 219, 0.08);
+            border-color: var(--accent-light);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-light);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            color: var(--accent-blue);
+        }
+
+        .feature-card h4 {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #777;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* How it Works (Premium Flow - Perfectly Sized) */
+        .how-it-works {
+            padding: 80px 0;
+            /* Padding thodi kam ki taaki compact lage */
+            background-color: var(--white);
+        }
+
+        .flow-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 900px;
+            /* Isse flow screen par zyada failega nahi */
+            margin: 0 auto;
+            /* Center me lane ke liye */
+        }
+
+        /* The connecting line */
+        .flow-container::before {
+            content: '';
+            position: absolute;
+            top: 38px;
+            /* Naye chhote icon ke center me set kiya */
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            /* Line thodi patli ki premium look ke liye */
+            background: var(--accent-light);
+            z-index: 0;
+        }
+
+        .flow-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 0 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .flow-step:hover {
+            transform: translateY(-5px);
+        }
+
+        .flow-icon {
+            width: 76px;
+            /* 90px se chhota karke 76px kar diya */
+            height: 76px;
+            background-color: var(--white);
+            color: var(--accent-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            /* Icon ka size bhi chhota kiya */
+            margin: 0 auto 15px auto;
+            border: 3px solid var(--accent-light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        /* The Hover Magic */
+        .flow-step:hover .flow-icon {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 25px rgba(24, 90, 219, 0.2);
+        }
+
+        .flow-step h5 {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .flow-step p {
+            color: #777;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .flow-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .flow-container::before {
+                display: none;
+            }
+        }
+
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--bg-gray);
+        }
+
+        .accordion-button {
+            font-weight: 600;
+            color: var(--primary-dark);
+            padding: 20px;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            background-color: var(--accent-light);
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: var(--accent-blue);
+            background-color: var(--accent-light);
+        }
+
+        .accordion-item {
+            border: none;
+            border-radius: 15px !important;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+        }
+
+        .accordion-body {
+            color: #666;
+            line-height: 1.6;
+        }
+
+
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent-blue));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .btn-cta {
+            background-color: var(--white);
+            color: var(--primary-dark);
+            border-radius: 30px;
+            padding: 12px 35px;
+            font-weight: 700;
+            margin-top: 20px;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Detailed Footer */
+        .footer {
+            padding: 60px 0 30px;
+            background-color: #050d1a;
+            color: #a0aabf;
+        }
+
+        .footer h5 {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .footer a {
+            color: #a0aabf;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-blue);
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* ========================================== */
+        /* SAATHI AI CHATBOT CSS                      */
+        /* ========================================== */
+
+        /* Floating Action Button Styling */
+        .ai-chat-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #185adb, #0a1931);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(24, 90, 219, 0.4);
+            z-index: 1050;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .ai-chat-fab:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 12px 30px rgba(24, 90, 219, 0.6);
+        }
+
+        /* Pulse Effect Ring */
+        .pulse-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 2px solid #185adb;
+            animation: fabPulse 2s infinite;
+            z-index: -1;
+        }
+
+        @keyframes fabPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* Expandable Chat Window Layout */
+        .ai-chat-window {
+            position: fixed;
+            bottom: 105px;
+            right: 30px;
+            width: 380px;
+            max-width: calc(100vw - 60px);
+            height: 480px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(10, 25, 49, 0.15);
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: translateY(30px) scale(0.9);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .ai-chat-window.active {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Chat Window Header */
+        .ai-chat-header {
+            background: linear-gradient(135deg, #0a1931, #185adb);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ai-avatar {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .btn-close-chat {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            opacity: 0.8;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-close-chat:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Chat Messages Area */
+        .ai-chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Message Bubbles */
+        .chat-msg {
+            display: flex;
+            width: 100%;
+        }
+
+        .msg-bubble {
+            max-width: 80%;
+            padding: 11px 16px;
+            border-radius: 16px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .bot-msg {
+            justify-content: flex-start;
+        }
+
+        .bot-msg .msg-bubble {
+            background-color: #ffffff;
+            color: #1e293b;
+            border-bottom-left-radius: 4px;
+            border: 1px solid #edf2f7;
+        }
+
+        .user-msg {
+            justify-content: flex-end;
+        }
+
+        .user-msg .msg-bubble {
+            background-color: #185adb;
+            color: #ffffff;
+            border-bottom-right-radius: 4px;
+        }
+
+        /* Typing Animation */
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            background-color: #94a3b8;
+            border-radius: 50%;
+            display: inline-block;
+            animation: blink 1.4s infinite both;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: .2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: .4s;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: .2;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: .2;
+            }
+        }
+
+        /* Footer & Inputs */
+        .ai-chat-footer {
+            padding: 14px;
+            background: #ffffff;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .chat-input-field {
+            border-radius: 25px;
+            padding: 10px 18px;
+            font-size: 0.88rem;
+            border: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+            width: 100%;
+        }
+
+        .chat-input-field:focus {
+            box-shadow: none;
+            border-color: #185adb;
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        .btn-send-chat {
+            width: 42px;
+            height: 42px;
+            background-color: #eff6ff;
+            color: #185adb;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            flex-shrink: 0;
+        }
+
+        .btn-send-chat:hover {
+            background-color: #185adb;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">JEE <span>SAATHI</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/predictor">Predictor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/mentorship">Mentorship</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+                </ul>
+
+                {% if logged_in %}
+                <div class="dropdown ms-lg-3">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        style="font-weight: 600; color: var(--accent-blue) !important; border: 1px solid var(--accent-light); border-radius: 30px; padding: 6px 18px !important; background-color: var(--accent-light); text-decoration: none;">
+                        <i class="fa-regular fa-user-circle me-1"></i> Hi, {{ user_name }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end"
+                        style="border: none; box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-radius: 12px; padding: 10px 0; margin-top: 10px;">
+                        <li><a class="dropdown-item" href="/dashboard"
+                                style="padding: 10px 25px; font-weight: 500; color: var(--text-main);"><i
+                                    class="fa-solid fa-chart-pie me-2"></i> My Dashboard</a></li>
+                        <!-- <li><a class="dropdown-item" href="#" style="padding: 10px 25px; font-weight: 500; color: var(--text-main);"><i class="fa-solid fa-gear me-2"></i> Settings</a></li> -->
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="/logout"
+                                style="padding: 10px 25px; font-weight: 500;"><i
+                                    class="fa-solid fa-arrow-right-from-bracket me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+                {% else %}
+                <div class="d-flex gap-2 ms-lg-3">
+                    <a href="/login" class="btn btn-outline"
+                        style="border-radius: 30px; font-weight: 600; padding: 8px 20px; text-decoration: none; border: 2px solid var(--accent-blue); color: var(--accent-blue);">Log
+                        In</a>
+                    <a href="/signup" class="btn btn-filled"
+                        style="background-color: var(--accent-blue); color: var(--white); border-radius: 30px; font-weight: 600; padding: 8px 20px; text-decoration: none; border: none;">Sign
+                        Up</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="hero-title">Your JEE Success Path.<br><span>Simplified.</span></h1>
+                    <p class="hero-subtitle">Stop guessing your future. Get AI-powered college predictions based on real
+                        JoSAA data, access tested resources, and 1:1 mentorship from IITians.</p>
+                    <div class="d-flex gap-3">
+                        <a href="/predictor"><button class="btn btn-custom btn-filled"><i
+                                    class="fa-solid fa-calculator me-2"></i>Predict
+                                College</button></a>
+                        <button class="btn btn-custom btn-outline"><i
+                                class="fa-solid fa-book-open me-2"></i>Resources</button>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://cdni.iconscout.com/illustration/premium/thumb/web-development-3454628-2918517.png"
+                        alt="Student studying" class="img-fluid" style="max-width: 85%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">One Platform, Complete Guidance</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                        <h4>AI College Predictor</h4>
+                        <p>Data-driven probability scores for top NITs, IIITs, & IITs. Powered by historical JoSAA data
+                            so you know where you stand.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-box"><i class="fa-solid fa-file-pdf"></i></div>
+                        <h4>Curated Resource Hub</h4>
+                        <p>Stop wasting time searching. Access subject-wise notes, formula sheets, and top
+                            checklists—all verified by rankers.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-box"><i class="fa-solid fa-people-arrows-left-right"></i></div>
+                        <h4>1:1 Mentorship</h4>
+                        <p>Confused about counseling? Connect directly with verified IIT & NIT students for personalized
+                            guidance and ground-level insights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="flow-container">
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fa-solid fa-id-card"></i></div>
+                    <h5>1. Enter Details</h5>
+                    <p>Input your JEE Rank, Category, and Home State securely in our portal.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h5>2. AI Analysis</h5>
+                    <p>Our ML model compares your profile against 5 years of JoSAA cutoff trends.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fa-solid fa-ranking-star"></i></div>
+                    <h5>3. Get Report</h5>
+                    <p>Receive a personalized probability list of colleges and start planning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne">
+                                    How accurate is the AI College Predictor?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show"
+                                data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our predictor is trained on the last 5 years of official JoSAA opening and closing
+                                    rank data. While it provides a highly accurate probability score, final admissions
+                                    depend on yearly cut-off fluctuations.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo">
+                                    Is my rank and personal data saved securely?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, your privacy is our priority. Your JEE rank and category details are strictly
+                                    used to generate your prediction report and are securely encrypted in our database.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree">
+                                    Are the study resources completely free?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes! All PDFs, formula sheets, and YouTube playlists curated in our Resource Hub are
+                                    completely free and thoroughly verified by top rankers.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFour">
+                                    Does this predictor work for state engineering exams?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Currently, JEE Saathi is optimized exclusively for JoSAA and CSAB counseling (NITs,
+                                    IIITs, and IITs). We are planning to add state-level predictors in future updates.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-4" style="color: #666; font-weight: 500;">
+                        Still have questions..? Mail us at <a href="mailto:team@chaicode.com"
+                            style="color: var(--accent-blue); text-decoration: none;">team@chaicode.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to secure your engineering seat?</h2>
+            <p style="font-size: 1.1rem; opacity: 0.9;">Join thousands of students making data-driven counseling
+                decisions.</p>
+            <button class="btn btn-cta">Start Free Prediction</button>
+        </div>
+    </section>
+    <button class="ai-chat-fab" onclick="toggleAIChat()" title="Ask Saathi AI">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span class="pulse-ring"></span>
+    </button>
+
+    <div class="ai-chat-window" id="aiChatWindow">
+        <div class="ai-chat-header">
+            <div class="d-flex align-items-center gap-2" style="display: flex; gap: 8px; align-items: center;">
+                <div class="ai-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div>
+                    <h6 class="fw-bold text-white mb-0" style="font-size: 0.95rem; margin: 0;">Saathi AI Assistant</h6>
+                    <small class="text-white opacity-75" style="font-size: 0.7rem;">
+                        <i class="fa-solid fa-circle text-success me-1"></i> Powered by Groq
+                    </small>
+                </div>
+            </div>
+            <button class="btn-close-chat" onclick="toggleAIChat()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="ai-chat-body" id="chatMessages">
+            <div class="chat-msg bot-msg">
+                <div class="msg-bubble">
+                    Bhai! Main tera <strong>Saathi AI</strong> hoon. Chahe padhai ki tension ho, counseling ka doubt ho,
+                    ya motivation low ho—kuch bhi poocho, hum milkar crack karenge! 🚀
+                </div>
+            </div>
+        </div>
+
+        <div class="ai-chat-footer">
+            <form id="aiChatForm" onsubmit="handleChatSubmit(event)" style="display: flex; gap: 8px; margin: 0;">
+                <input type="text" id="chatInput" class="chat-input-field" placeholder="Type your query here..."
+                    autocomplete="off" required>
+                <button type="submit" class="btn-send-chat"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer" id="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h4 style="color: var(--white); font-weight: 700; margin-bottom: 15px;">JEE <span
+                            style="color: var(--accent-blue);">SAATHI</span></h4>
+                    <p style="margin-bottom: 20px;">Your trusted AI-powered companion for JEE counseling, rank
+                        prediction, and verified study resources.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <a href="#">Home</a>
+                    <a href="#">College Predictor</a>
+                    <a href="#">Study Materials</a>
+                    <a href="#">Book a Mentor</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Support & Legal</h5>
+                    <a href="#footer-section">About Us</a>
+                    <a href="#">Contact Support</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 JEE Saathi. Nihal bhaiya aapke saath hai.</p>
+            </div>
+        </div>
+    </footer>
+    <script>// ==========================================
+        // SAATHI AI CHATBOT JS LOGIC (With Memory)
+        // ==========================================
+
+        // Chat state memory save karna
+        function saveChatState() {
+            const chatMessages = document.getElementById('chatMessages').innerHTML;
+            const chatWin = document.getElementById('aiChatWindow');
+            const isOpen = chatWin.classList.contains('active');
+
+            sessionStorage.setItem('saathi_chat_history', chatMessages);
+            sessionStorage.setItem('saathi_chat_is_open', isOpen);
+        }
+
+        // Page load hote hi purana chat lana
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedChat = sessionStorage.getItem('saathi_chat_history');
+            const isOpen = sessionStorage.getItem('saathi_chat_is_open');
+
+            const chatWin = document.getElementById('aiChatWindow');
+            const chatMessages = document.getElementById('chatMessages');
+
+            if (savedChat) {
+                chatMessages.innerHTML = savedChat;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            if (isOpen === 'true') {
+                chatWin.classList.add('active');
+            }
+        });
+
+        // Chat window on/off karna
+        function toggleAIChat() {
+            const chatWin = document.getElementById('aiChatWindow');
+            chatWin.classList.toggle('active');
+
+            if (chatWin.classList.contains('active')) {
+                const chatBody = document.getElementById('chatMessages');
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+            saveChatState();
+        }
+
+        // Message bhejna aur receive karna (WITH AI MEMORY)
+        function handleChatSubmit(event) {
+            event.preventDefault();
+            const inputEl = document.getElementById('chatInput');
+            const queryText = inputEl.value.trim();
+            if (!queryText) return;
+
+            const chatMessages = document.getElementById('chatMessages');
+
+            // 🧠 1. API History Session Storage se nikalo (ya naya array banao)
+            let apiHistory = JSON.parse(sessionStorage.getItem('saathi_api_history')) || [];
+
+            // User ke message ko history me daalo
+            apiHistory.push({ role: "user", content: queryText });
+            sessionStorage.setItem('saathi_api_history', JSON.stringify(apiHistory));
+
+            // 2. UI par User message dikhao
+            const userHtml = `<div class="chat-msg user-msg"><div class="msg-bubble">${queryText}</div></div>`;
+            chatMessages.insertAdjacentHTML('beforeend', userHtml);
+            inputEl.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            saveChatState();
+
+            // 3. Typing animation
+            const typingId = 'typing_' + Date.now();
+            const typingHtml = `
+        <div class="chat-msg bot-msg" id="${typingId}">
+            <div class="msg-bubble typing-dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>`;
+            chatMessages.insertAdjacentHTML('beforeend', typingHtml);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // 4. API Call (Ab hum poori 'apiHistory' bhej rahe hain)
+            fetch('/ai-query', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ history: apiHistory }) // 🔥 Ye change hua hai
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById(typingId).remove();
+
+                    // AI ke response ko history me save karo taaki usko agli baar yaad rahe
+                    apiHistory.push({ role: "assistant", content: data.response });
+                    sessionStorage.setItem('saathi_api_history', JSON.stringify(apiHistory));
+
+                    // Formatting theek karna (**bold** aur line breaks)
+                    let cleanResponse = data.response
+                        .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+                        .replace(/\*(.*?)\*/g, '<i>$1</i>')
+                        .replace(/\n/g, '<br>');
+
+                    const botHtml = `<div class="chat-msg bot-msg"><div class="msg-bubble">${cleanResponse}</div></div>`;
+                    chatMessages.insertAdjacentHTML('beforeend', botHtml);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                    saveChatState();
+                })
+                .catch(error => {
+                    document.getElementById(typingId).remove();
+                    const errorHtml = `<div class="chat-msg bot-msg"><div class="msg-bubble text-danger">Network error bhai! Thodi der baad try kar.</div></div>`;
+                    chatMessages.insertAdjacentHTML('beforeend', errorHtml);
+
+                    // Error aaye toh aakhri message hata do taaki history kharab na ho
+                    apiHistory.pop();
+                    sessionStorage.setItem('saathi_api_history', JSON.stringify(apiHistory));
+                    saveChatState();
+                });
+        }
+
+        // Chat ke bahar click karne par usko band karna
+        document.addEventListener('click', function (event) {
+            const chatWindow = document.getElementById('aiChatWindow');
+            const fabButton = document.querySelector('.ai-chat-fab');
+
+            if (chatWindow && chatWindow.classList.contains('active')) {
+                if (!chatWindow.contains(event.target) && !fabButton.contains(event.target)) {
+                    chatWindow.classList.remove('active');
+                    saveChatState();
+                }
+            }
+        });</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | JEE Saathi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Reusing our Modern Color Palette */
+        :root {
+            --primary-dark: #0a1931; 
+            --accent-blue: #185adb;  
+            --accent-light: #e6eefa; 
+            --text-main: #333333;
+            --white: #ffffff;
+            --bg-gray: #f8faff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        /* Signup Card Styling */
+        .login-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 480px;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .brand-logo {
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 5px;
+            text-decoration: none;
+            display: block;
+        }
+        .brand-logo span {
+            color: var(--accent-blue);
+        }
+
+        .login-title {
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 30px;
+            font-size: 1.15rem;
+        }
+
+        /* Custom Input Fields */
+        .form-control {
+            border-radius: 12px;
+            padding: 12px 18px;
+            border: 1px solid #e0e6ed;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(24, 90, 219, 0.1);
+        }
+        .form-label {
+            font-weight: 500;
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        /* Button Styling */
+        .btn-login {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border-radius: 30px;
+            padding: 12px;
+            font-weight: 600;
+            width: 100%;
+            border: none;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        .btn-login:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(10, 25, 49, 0.2);
+            color: var(--white);
+        }
+
+        .auth-links {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9rem;
+        }
+        .auth-links a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .auth-links a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Back to home link */
+        .back-link {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            color: #777;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .back-link:hover {
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="/" class="back-link d-none d-md-block">
+        <i class="fa-solid fa-arrow-left me-2"></i> Back to Home
+    </a>
+
+    <div class="login-card">
+        <a href="/" class="brand-logo">JEE <span>SAATHI</span></a>
+        <h2 class="login-title">Create an Account</h2>
+        <!-- new-added  -->
+         {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert" style="font-size: 0.9rem; border-radius: 10px; padding: 10px 15px;">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="padding: 12px;"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <form action="/signup" method="POST">
+            
+            <div class="mb-3">
+                <label for="fullname" class="form-label">Full Name</label>
+                <div class="input-group">
+                    <span class="input-group-text" style="background: transparent; border-right: none; border-radius: 12px 0 0 12px; border-color: #e0e6ed;">
+                        <i class="fa-regular fa-user text-muted"></i>
+                    </span>
+                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter your full name" style="border-left: none;" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <div class="input-group">
+                    <span class="input-group-text" style="background: transparent; border-right: none; border-radius: 12px 0 0 12px; border-color: #e0e6ed;">
+                        <i class="fa-regular fa-envelope text-muted"></i>
+                    </span>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" style="border-left: none;" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Create Password</label>
+                <div class="input-group">
+                    <span class="input-group-text" style="background: transparent; border-right: none; border-radius: 12px 0 0 12px; border-color: #e0e6ed;">
+                        <i class="fa-solid fa-lock text-muted"></i>
+                    </span>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Create a strong password" style="border-left: none;" required>
+                </div>
+            </div>
+
+            <div class="form-check mt-3 mb-3">
+                <input class="form-check-input" type="checkbox" value="" id="termsCheck" required>
+                <label class="form-check-label text-muted" for="termsCheck" style="font-size: 0.85rem;">
+                    I agree to the <a href="#" style="color: var(--accent-blue); text-decoration: none;">Terms of Service</a> & <a href="#" style="color: var(--accent-blue); text-decoration: none;">Privacy Policy</a>.
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-login">Sign Up</button>
+        </form>
+
+        <div class="auth-links">
+            <p class="mb-0 text-muted">Already have an account? <a href="/login">Log In here</a></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
