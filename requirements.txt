@@ -1,0 +1,7 @@
+Flask
+pandas
+scikit-learn
+numpy
+gunicorn
+groq
+Flask-SQLAlchemy
