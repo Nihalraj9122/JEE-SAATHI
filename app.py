@@ -435,6 +435,29 @@ def mentorship_page():
                            logged_in=False, 
                            mentors=active_mentors)
 
+@app.route('/mentor_profile')
+def mentor_profile():
+    if 'mentor_id' not in session:
+        flash('Please login to view your profile.', 'danger')
+        return redirect(url_for('mentor_login'))
+    
+    current_mentor = Mentor.query.get(session['mentor_id'])
+    my_doubts = Doubt.query.filter_by(mentor_name=current_mentor.name).all()
+    
+    # 🔥 NAYA LOGIC: Sirf unique (alag-alag) bachhon ko ginega
+    unique_students = set([d.student_name for d in my_doubts])
+    total_students = len(unique_students)
+    
+    # Ye doubts ginne ke liye hai
+    pending_count = sum(1 for d in my_doubts if d.status == 'Pending')
+    resolved_count = sum(1 for d in my_doubts if d.status != 'Pending')
+    
+    # Note: Variable ka naam 'total_doubts' hi rakha hai taaki tujhe HTML me change na karna pade
+    return render_template('mentor_profile.html', 
+                           mentor=current_mentor, 
+                           total_doubts=total_students, 
+                           pending_count=pending_count, 
+                           resolved_count=resolved_count)
 
 @app.route('/submit_doubt', methods=['POST'])
 def submit_doubt():
