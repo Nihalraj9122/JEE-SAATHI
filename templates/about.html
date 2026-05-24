@@ -150,31 +150,44 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Standard Footer */
-        .footer {
-            background-color: #050d1a;
-            color: #a0aec0;
+       .footer {
             padding: 60px 0 30px;
-            margin-top: 80px;
+            background-color: #050d1a;
+            color: #a0aabf;
         }
 
         .footer h5 {
-            color: white;
+            color: var(--white);
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .footer a {
-            color: #a0aec0;
+            color: #a0aabf;
             text-decoration: none;
-            transition: 0.3s;
-            line-height: 2;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s;
         }
 
         .footer a:hover {
-            color: white;
-            padding-left: 5px;
+            color: var(--accent-blue);
         }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
 
         /* ========================================== */
         /* SAATHI AI CHATBOT CSS                      */
