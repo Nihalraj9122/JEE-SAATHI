@@ -566,6 +566,34 @@
         </div>
     </div>
     <script>
+        // URL se data nikal kar form me auto-fill karne ka logic
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Rank auto-fill
+        if(urlParams.has('rank')) {
+            let rankInput = document.getElementById('jee_rank');
+            if(rankInput) rankInput.value = urlParams.get('rank');
+        }
+        
+        // Category auto-fill
+        if(urlParams.has('category')) {
+            let catInput = document.getElementById('category');
+            if(catInput) catInput.value = urlParams.get('category');
+        }
+        
+        // State auto-fill
+        if(urlParams.has('state')) {
+            let stateInput = document.getElementById('home_state');
+            if(stateInput) stateInput.value = urlParams.get('state');
+        }
+        
+        // Gender auto-fill
+        if(urlParams.has('gender')) {
+            let genderInput = document.getElementById('gender');
+            if(genderInput) genderInput.value = urlParams.get('gender');
+        }
+    });
         // ==========================================
         // SAATHI AI CHATBOT JS LOGIC (With Memory)
         // ==========================================
